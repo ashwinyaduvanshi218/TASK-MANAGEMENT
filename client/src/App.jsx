@@ -9,7 +9,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
 
   const fetchTasks = async () => {
-    const res = await fetch("http://localhost:5000/api/tasks");
+    const res = await fetch("https://task-management-xu3b.onrender.com/api/tasks");
     const data = await res.json();
     setTasks(data);
   };
@@ -21,7 +21,7 @@ function App() {
   const handleAddTask = async () => {
     if (!text || !priority) return alert("Fill all fields");
 
-    await fetch("http://localhost:5000/api/tasks/add", {
+    await fetch("https://task-management-xu3b.onrender.com/api/tasks/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text, priority }),
@@ -35,7 +35,7 @@ function App() {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this task?")) return;
 
-    await fetch(`http://localhost:5000/api/tasks/${id}`, {
+    await fetch(`https://task-management-xu3b.onrender.com/api/tasks/${id}`, {
       method: "DELETE",
     });
 
@@ -45,7 +45,7 @@ function App() {
   const toggleComplete = async (task) => {
     if (!window.confirm("Mark as completed?")) return;
 
-    await fetch(`http://localhost:5000/api/tasks/${task._id}`, {
+    await fetch(`https://task-management-xu3b.onrender.com/api/tasks/${task._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ isCompleted: !task.isCompleted }),
@@ -55,7 +55,7 @@ function App() {
   };
 
   const toggleFavorite = async (task) => {
-    await fetch(`http://localhost:5000/api/tasks/${task._id}`, {
+    await fetch(`https://task-management-xu3b.onrender.com/api/tasks/${task._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ isFavorite: !task.isFavorite }),
@@ -68,7 +68,7 @@ function App() {
     const newText = prompt("Edit task", task.text);
     if (!newText) return;
 
-    await fetch(`http://localhost:5000/api/tasks/${task._id}`, {
+    await fetch(`https://task-management-xu3b.onrender.com/api/tasks/${task._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text: newText }),
@@ -94,7 +94,7 @@ function App() {
       </button>
 
       <h1 className="text-xl sm:text-3xl font-bold mb-4 text-white">
-        🚀 Task Manager
+         Task Manager
       </h1>
 
       {/* FORM */}
